@@ -3,13 +3,15 @@ use lego; -- Tell MariaDB to use the lego database so that I can work with it.
 -- Selecting Values
 
 -- Select the name and part_num columns from the parts table. Show only names that include the substring 'Hair', and order them with the part_num in descending order
--- SELECTS only the 'name' and 'part_num' columns to display FROM the 'parts' table in the database WHERE only the rows with 'name' containing a string LIKE 'Hair' are displayed. Uses ORDER BY to list by 'part_num' in descending order.
+-- SELECTS only the 'name' and 'part_num' columns to display FROM the 'parts' table in the database WHERE only the rows with 'name' containing a substring LIKE 'Hair' anywhere in the string are displayed. Uses ORDER BY to list by 'part_num' in descending order.
 SELECT name, part_num 
-FROM parts WHERE name LIKE "%Hair"
+FROM parts WHERE name LIKE "%Hair%"
 ORDER BY part_num DESC;
 
 --     From the sets table, select all the sets that included the word 'Showdown' in the name between 1990 and 2015
-
+-- Selecting ALL(*) from the SETS table WHERE the 'name' contains the string 'Showdown' anywhere where the 'year' is BETWEEN 1990 and 2015
+SELECT * FROM sets 
+WHERE name LIKE "%Showdown%" AND year BETWEEN 1990 AND 2015;
 --     Aliasing the part_categories table as p, show the id and name of the values in that table where the name includes the word 'Bricks'
 
 -- Subqueries
