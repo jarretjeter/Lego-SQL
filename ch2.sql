@@ -81,6 +81,10 @@ FROM colors
 WHERE is_trans = 1;
 --     Show the sum of all the parts for all the sets that came out since the year 2000.
 
+-- In the 'sets' table, for every 'year' column value equal to or greater than 2000, SUM() will iterate through and add up the matching values in the 'num_parts' column.
+SELECT SUM(num_parts)
+FROM sets
+WHERE year >= 2000;
 --     Show the average number of parts for sets that came out since the year 2000.
 
 --     Using GROUP BY, show the average number of parts for each theme_id in sets.
