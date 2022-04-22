@@ -9,11 +9,15 @@ FROM parts WHERE name LIKE "%Hair%"
 ORDER BY part_num DESC;
 
 --     From the sets table, select all the sets that included the word 'Showdown' in the name between 1990 and 2015
--- Selecting ALL(*) from the SETS table WHERE the 'name' contains the string 'Showdown' anywhere where the 'year' is BETWEEN 1990 and 2015
-SELECT * FROM sets 
+-- Selecting ALL(*) FROM the SETS table WHERE the 'name' contains the string 'Showdown' anywhere where the 'year' is BETWEEN 1990 and 2015
+SELECT * 
+FROM sets 
 WHERE name LIKE "%Showdown%" AND year BETWEEN 1990 AND 2015;
 --     Aliasing the part_categories table as p, show the id and name of the values in that table where the name includes the word 'Bricks'
-
+-- Selects only the 'id' and 'name' columns FROM the 'part_categories' table(aliased AS 'p') and selecting only the rows WHERE 'name' has a substring LIKE 'Bricks'
+SELECT id, name
+FROM part_categories AS p
+WHERE name LIKE "%Bricks%";
 -- Subqueries
 
 --     Select all the ids from the themes table where the name is in 'Pirates' or 'Star Wars'. This is your subquery. Then show the names of all the sets where the theme_id matches an id in that subquery.
