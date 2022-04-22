@@ -67,6 +67,10 @@ ORDER BY quantity LIMIT 20;
 -- Working with Dates
 
 -- Selecting from the sets table: - Select the name and year column. Construct an additional column in your SELECT clause using the MySQL MAKEDATE() function. This column's value should be a date corresponding to January 1st of the year. Hint: You should use the year column and day 1 with MAKEDATE(). Read the MySQL documentation for MAKEDATE().
+
+-- MAKEDATE(year, day) takes the value 'year' as whatever the year value is (in this case, the 'year' column) to create a year and the 'day' value creates a month-day combination depending on what day of the year it is 
+SELECT name, year, MAKEDATE(year, 1) AS new_year
+FROM sets;
 -- Aggregation Functions
 
 --     Count the total number of transparent colors in the colors table (Note: is_trans is a binary value, and you want to show how many rows there are where it equals 1).
