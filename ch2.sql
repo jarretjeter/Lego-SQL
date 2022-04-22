@@ -105,4 +105,9 @@ FROM parts, part_categories
 WHERE parts.part_cat_id = part_categories.id AND parts.name LIKE '%Werewolf%';
 --     Repeat the query above, but this time write it explicitly using INNER JOIN, and alias parts as 'p' and part_categories as 'pc'.
 
+--Aliased the 'part_category' table's column 'name' AS 'category' so that there aren't more than one 'name' column in the join. Also I didn't find it necessary to join the 'id' column from 'part_categories' because the 'parts' table already had the same id values.
+SELECT p.part_num, p.name, p.part_cat_id, pc.name AS category
+FROM parts AS p
+INNER JOIN part_categories AS pc
+	ON p.part_cat_id = pc.id AND p.name LIKE '%Werewolf%';
 --     Perform left, right, and inner joins on the colors and inventory_parts tables, where the color id matches the inventory_parts color id. Note many rows each join returns. Write a brief comment in your SQL file under these code blocks explaining what the difference in rows tells you.
