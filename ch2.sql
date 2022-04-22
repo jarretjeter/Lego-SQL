@@ -99,10 +99,10 @@ GROUP BY theme_id;
 
 --     Using a free-form join (where the JOIN type isn't specified, equivalent to an inner join), join the parts and part_categories tables. Filter for values where the part_categories id matches the parts partcatid, and where the name of the part contains the word 'Werewolf'.
 
--- I used aliasing on the tables to better identify the columns for myself and aliased the 'part_categories' column 'name' as 'category' so that there weren't two columns named 'name'. I didn't join the 'id' column from 'part_categories' because the 'parts' table already had that value.
-SELECT p.part_num, p.name, p.part_cat_id, pc.name AS category
-FROM parts AS p, part_categories AS pc
-WHERE p.part_cat_id = pc.id AND p.name LIKE '%Werewolf%';
+-- Here I used dot notation so I could better identify which column belonged to which table. Result is all of the tables were included in the join. 
+SELECT *
+FROM parts, part_categories
+WHERE parts.part_cat_id = part_categories.id AND parts.name LIKE '%Werewolf%';
 --     Repeat the query above, but this time write it explicitly using INNER JOIN, and alias parts as 'p' and part_categories as 'pc'.
 
 --     Perform left, right, and inner joins on the colors and inventory_parts tables, where the color id matches the inventory_parts color id. Note many rows each join returns. Write a brief comment in your SQL file under these code blocks explaining what the difference in rows tells you.
