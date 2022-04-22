@@ -21,7 +21,13 @@ WHERE name LIKE "%Bricks%";
 -- Subqueries
 
 --     Select all the ids from the themes table where the name is in 'Pirates' or 'Star Wars'. This is your subquery. Then show the names of all the sets where the theme_id matches an id in that subquery.
-
+-- Selects the 'name' and 'theme_id' FROM the 'sets' table WHERE the 'theme_id' value is matching IN the subqueried 'themes' table's 'id' column and WHERE the 'name' column has substrings LIKE 'Pirates' or 'Star Wars'
+SELECT name, theme_id
+FROM sets
+WHERE theme_id IN (
+  SELECT id
+  FROM themes
+  WHERE name LIKE "%Pirates%" OR name LIKE "%Star Wars%");
 --     Select the ids of the values in the inventories table that have more than one version (i.e. version > 1). This is your subquery. Then select everything from the inventory_parts table where the inventory_id matches an id in that subquery. Limit the output to 10 rows.
 
 -- Manipulate Values in Select
