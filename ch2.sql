@@ -42,6 +42,19 @@ WHERE inventory_id IN (
 
 --     Aliasing the sets table as 's', select the year and name of the values in that table that include the substring 'Batman'. Concatenate three exclamation marks to the end of each name, and make all the names upper case.
 
+-- First, use UPDATE to uppercase and concatenate with '!!!' all name values containing the string 'Batman'
+UPDATE sets SET name = UPPER(CONCAT(name, '!!!'))
+WHERE name LIKE '%Batman%';
+-- Display the updated 'name' column along with the 'year' column from the 'sets' table
+SELECT name, year
+FROM sets
+WHERE name LIKE '%Batman%'
+-- This also works, but the column name 'name' is altered and doesn't look very presentable
+SELECT UPPER(CONCAT(name, '!!!')), year
+FROM sets AS s
+WHERE name LIKE '%Batman%';
+
+
 --     For every quantity value greater than 1 in the inventory_parts table, double the value of the quantity. Limit your output to 20 rows, and order it by quantity.
 
 -- Working with Dates
