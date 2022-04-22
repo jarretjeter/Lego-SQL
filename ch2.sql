@@ -54,8 +54,15 @@ SELECT UPPER(CONCAT(name, '!!!')), year
 FROM sets AS s
 WHERE name LIKE '%Batman%';
 
-
 --     For every quantity value greater than 1 in the inventory_parts table, double the value of the quantity. Limit your output to 20 rows, and order it by quantity.
+
+-- Updates 'quantity' value to its value * 2 if the initial value is greater than 1
+UPDATE inventory_parts SET quantity = quantity * 2
+WHERE quantity > 1;
+-- For some reason, when I add the clause 'ORDER BY quantity', none of the doubled quantities are displayed, and quantity always equals 1
+SELECT *
+FROM inventory_parts
+ORDER BY quantity LIMIT 20;
 
 -- Working with Dates
 
