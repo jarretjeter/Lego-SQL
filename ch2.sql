@@ -75,6 +75,10 @@ FROM sets;
 
 --     Count the total number of transparent colors in the colors table (Note: is_trans is a binary value, and you want to show how many rows there are where it equals 1).
 
+-- Use COUNT() on 'is_trans' to find how many times 'is_trans' is equal to 1. Totals up to 28
+SELECT COUNT(is_trans)
+FROM colors
+WHERE is_trans = 1;
 --     Show the sum of all the parts for all the sets that came out since the year 2000.
 
 --     Show the average number of parts for sets that came out since the year 2000.
