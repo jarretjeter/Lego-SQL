@@ -111,3 +111,23 @@ FROM parts AS p
 INNER JOIN part_categories AS pc
 	ON p.part_cat_id = pc.id AND p.name LIKE '%Werewolf%';
 --     Perform left, right, and inner joins on the colors and inventory_parts tables, where the color id matches the inventory_parts color id. Note many rows each join returns. Write a brief comment in your SQL file under these code blocks explaining what the difference in rows tells you.
+
+SELECT *
+FROM colors AS c
+INNER JOIN inventory_parts AS ip
+ON c.id = ip.color_id;
+-- 50,000/580,251
+
+SELECT *
+FROM colors AS c
+LEFT JOIN inventory_parts AS ip
+ON c.id = ip.color_id;
+-- 50,000/580,255
+
+SELECT *
+FROM colors AS c
+RIGHT JOIN inventory_parts AS ip
+ON c.id = ip.color_id;
+-- 50,000/580,251
+
+-- The left join on the 'colors' table has 4 more rows than the inner join and the right join on 'inventory_parts'.I believe this means that the colors table has 4 id's that aren't matched/are missing in the inventory_parts color_id columns
